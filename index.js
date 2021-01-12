@@ -28,7 +28,7 @@ while (remainingLetters > 0 && countAttempt > 0) {
 		countAttempt -= 1;
 		console.log(`Вы использовали ${count}-ю попытку!`);
 	} for (let k = 0; k < ourWord.length; k += 1) {
-		if (guess === ourWord[k]) {
+		if (guess === ourWord[k] && answerArray[k] === '-') {
 			answerArray[k] = guess;
 			console.log(`Браво, Вы угадали букву '${ourWord[k]}'`);
 			remainingLetters -= 1;
