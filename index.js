@@ -11,12 +11,13 @@ for (let i = 0; i < ourWord.length; i += 1) {
 let remainingLetters = ourWord.length;
 
 let count = 0;
+let countAttempt = 10;
 
 
 
-while (remainingLetters > 0) {
+while (remainingLetters > 0 && countAttempt > 0) {
 	console.log(answerArray);
-	let guess = prompt('Угадай букву?')
+	let guess = prompt('Угадай букву?').toLowerCase();
 	if (guess === null) {
 		alert('Game over!')
 		break;
@@ -24,14 +25,18 @@ while (remainingLetters > 0) {
 		alert('Please enter a single letter!')
 	} else if (guess) {
 		count += 1;
+		countAttempt -= 1;
 		console.log(`Вы использовали ${count}-ю попытку!`);
 	} for (let k = 0; k < ourWord.length; k += 1) {
-		if (guess === ourWord[k] && !answerArray.includes(ourWord[k])) {
+		if (guess === ourWord[k]) {
 			answerArray[k] = guess;
 			console.log(`Браво, Вы угадали букву '${ourWord[k]}'`);
 			remainingLetters -= 1;
 		}
 	} 
+	if (countAttempt === 0) {
+		console.log('Ваши попытки отгадать слово исчерпаны!');
+	}
 }
   
 if (remainingLetters === 0) {
